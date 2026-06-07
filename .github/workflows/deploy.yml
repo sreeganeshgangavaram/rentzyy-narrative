@@ -22,8 +22,7 @@ jobs:
         run: npm run build
 
       - name: List build output
-        run: ls -la dist/ && ls -la dist/client/ || echo "No client folder"
-
+        run: ls -la dist/client/ && ls -la dist/client/assets/ || echo "No assets folder"
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
