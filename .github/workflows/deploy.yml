@@ -21,6 +21,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: List build output
+        run: ls -la dist/ && ls -la dist/client/ || echo "No client folder"
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
