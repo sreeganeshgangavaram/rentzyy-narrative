@@ -21,8 +21,25 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: List build output
-        run: ls -la dist/client/ && ls -la dist/client/assets/ || echo "No assets folder"
+      - name: Create index.html
+        run: |
+          cat > dist/client/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Rentzyy - Make PG Management Effortless</title>
+              <link rel="stylesheet" href="/rentzyy-narrative/assets/styles-D11KhREe.css">
+            </head>
+            <body>
+              <div id="root"></div>
+              <script type="module" src="/rentzyy-narrative/assets/index-CmbhMfq6.js"></script>
+              <script type="module" src="/rentzyy-narrative/assets/index-CSDmQibY.js"></script>
+            </body>
+          </html>
+          EOF
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
